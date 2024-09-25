@@ -4,5 +4,8 @@ export default defineNitroConfig({
   routeRules: {
     '/github/**': { redirect: 'https://github.com/rhawkins030/ThemeParks' },
     '/': { redirect: '/api/' }
+  },
+  runtimeConfig: {
+    UNIVERSALORLANDO_ASSET: '',
   }
 });
