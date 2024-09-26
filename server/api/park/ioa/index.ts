@@ -15,12 +15,12 @@ interface ThemeParkHour {
 
 async function load(event: H3Event){
     let dat: ThemeParkInfo = {
-        name: `Universal Studios Florida`,
-        id: `uor.usf`,
+        name: `Universal Islands of Adventure`,
+        id: `uor.ioa`,
         hours: [],
     }
     const data: any = await ThemeParkFetch(useRuntimeConfig(event).UNIVERSALORLANDO_SERVICE)
-    const service = data.Results[1]
+    const service = data.Results[0]
     dat.name == service.MblDisplayName;
     service.Hours.forEach((hour) => {
         if(hour.EarlyEntryUnix == 0) {
@@ -38,7 +38,7 @@ async function load(event: H3Event){
             })
         }
     })
-    // Universal is number 1 in array.
+    // IOA is number 0 in array.
 
 
 
