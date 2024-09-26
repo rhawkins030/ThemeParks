@@ -1,35 +1,21 @@
-export interface CacheList {
-    id: string
-    url: string
+import type { CacheOptions } from "nitropack";
+
+const commonOptions: CacheOptions = {
+    group: "themeparks",
+    swr: false,
+    maxAge: 60 * 5,
+    staleMaxAge: 60 * 10
 }
 
-export function getDataById(array: Array<{ id: string; data: string }>, id: string): any | null {
-    const found = array.find(item => item.id === id);
-    return found ? found.data : null;
-}
+const cacheOptions = (name: string): CacheOptions => ({
+    ...commonOptions,
+    name,
+})
 
-export class ThemeCache {
-    private url: CacheList[];
-    private data: any[];
+export const ThemeParkFetch = cachedFunction(async (url: string) => {
+    const data = await $fetch(url)
 
-    constructor(url: CacheList[]){
-        this.url = url;
-    }
-
-    public start() {
-        let sdat: any[];
-        this.url.forEach(async ur => {
-            const data = $fetch(ur.url);
-            sdat.push({
-                id: ur.id,
-                data: data
-            });
-        })
-        this.data = sdat;
-        setTimeout(this.start, 5*60*1000);
-    }
-
-    public get(key: string): any | null {
-        return getDataById(this.data, key);
-    }
-}
+    return data
+}, {
+    ...cacheOptions("ThemePark")
+})
