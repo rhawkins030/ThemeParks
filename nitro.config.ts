@@ -8,5 +8,7 @@ export default defineNitroConfig({
   runtimeConfig: {
     UNIVERSALORLANDO_ASSET: '',
     UNIVERSALORLANDO_SERVICE: '',
+    WALTDISNEYWORLD_AUTH: '',
+    WALTDISNEYWORLD_FACILITY: '',
   }
 });
