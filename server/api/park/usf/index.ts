@@ -1,5 +1,6 @@
 import { H3Event } from 'h3';
-import { ThemeParkGeneral } from '~/types/ThemePark';
+import { ThemeParkGeneral, ThemeParkInfo } from '~/types/ThemePark';
+import { createMeta, metaExists } from '~/utils/data';
 
 
 async function load(event: H3Event){
@@ -27,9 +28,20 @@ async function load(event: H3Event){
             })
         }
     })
-    // Universal is number 1 in array.
 
-
+    if(!metaExists("usf")) {
+        let data: ThemeParkInfo = {
+            id: "usf",
+            name: "Universal Studios Florida",
+            description: "",
+            color: service.Color,
+            gps: {
+                latitude: service.Latitude,
+                longitude: service.Longitude
+            }
+        }
+        createMeta("usf", data);
+    }
 
     return dat;
 }

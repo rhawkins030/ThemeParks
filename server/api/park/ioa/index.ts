@@ -1,5 +1,5 @@
 import { H3Event } from 'h3';
-import { ThemeParkGeneral } from '~/types/ThemePark';
+import { ThemeParkGeneral, ThemeParkInfo } from '~/types/ThemePark';
 
 async function load(event: H3Event){
     let dat: ThemeParkGeneral = {
@@ -26,9 +26,20 @@ async function load(event: H3Event){
             })
         }
     })
-    // IOA is number 0 in array.
 
-
+    if(!metaExists("ioa")) {
+        let data: ThemeParkInfo = {
+            id: "ioa",
+            name: "Universal Islands of Adventure",
+            description: "",
+            color: service.Color,
+            gps: {
+                latitude: service.Latitude,
+                longitude: service.Longitude
+            }
+        }
+        createMeta("ioa", data);
+    }
 
     return dat;
 }
