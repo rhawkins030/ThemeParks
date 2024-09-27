@@ -4,12 +4,12 @@ Unofficial API built on [Nitro](https://github.com/unjs/nitro) for accessing The
 Most parks are secured or want to still be secured. These are not supplied with the code because I don't want to deal with Theme Park companies.
 
 ### Disclaimer
-I don't reccomend running the API, it's built for a one & done setup on a server. **I'm not gonna stop you, just not going to help you.**
+I don't recommend running the API, it's built for a one & done setup on a server. **I'm not gonna stop you, just not going to help you.**
 
-### Objects
+## Objects
 Each park has its own set of data schematics that make me want to rip my hair out, so I simplified each of them to a few types.
 
-##### Park:
+#### Park:
 `/api/park/{park_id}`
 | Data | Type | Example |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ThemeParkHour:
 | closeTime | Number | 1727355600 |
 | earlyTime? | Number | 1727355600 |
 
-##### Ride:
+#### Ride:
 `/api/park/{park_id}/rides`
 | Data | Type | Example |
 | --- | --- | --- |
@@ -34,12 +34,12 @@ ThemeParkHour:
 | status | String | `CLOSED`, `OPEN`, `WEATHER_DELAY` |
 | wait_time? | Number | 5 |
 
-### Configuration
+## Configuration
 
 Theme Parks are special and each of them have their own way of configurating.
 You can use both `.env` and `nitro.config.ts` to configure your park systems.
 
-##### Enviromental Variables (.env):
+#### Enviromental Variables (.env):
 Variables are the easiest way to make sure you don't mess with things you don't want to.
 Enviromental variables require 1 structure. Example:
 ```
@@ -51,5 +51,5 @@ NITRO_UNIVERSALORLANDO_ASSET=https://example.com
 
 Each park is specific so it's up to you to figure those out.
 
-##### Nitro Configuration (nitro.config.ts):
+#### Nitro Configuration (nitro.config.ts):
 The Nitro config has every single key used saved under its `runtimeConfig` value. You just have to fill it in one by one, which can take awhile.
