@@ -1,0 +1,11 @@
+{
+    "id": "example",
+    "name": "Example Parks",
+    "description": "Random description",
+    "hours": [],
+    "gps": {
+        "latitude": 0.00,
+        "longitude": 0.00
+    },
+    "color": "#ffffff"
+}
