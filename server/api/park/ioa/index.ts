@@ -1,20 +1,8 @@
 import { H3Event } from 'h3';
-
-interface ThemeParkInfo {
-    name: string
-    id: string
-    hours?: ThemeParkHour[]
-}
-
-interface ThemeParkHour {
-    date: string
-    openTime: number
-    closeTime: number
-    earlyTime?: number
-}
+import { ThemeParkGeneral } from '~/types/ThemePark';
 
 async function load(event: H3Event){
-    let dat: ThemeParkInfo = {
+    let dat: ThemeParkGeneral = {
         name: `Universal Islands of Adventure`,
         id: `uor.ioa`,
         hours: [],

@@ -1,11 +1,5 @@
 import { H3Event } from 'h3';
-
-interface ThemeParkRide {
-    id: string
-    name: string
-    status: string
-    wait_time?: number;
-}
+import { ThemeParkRide } from '~/types/ThemePark';
 
 async function load(event: H3Event){
     let dat: ThemeParkRide[] = [];

@@ -1,20 +1,9 @@
 import { H3Event } from 'h3';
+import { ThemeParkGeneral } from '~/types/ThemePark';
 
-interface ThemeParkInfo {
-    name: string
-    id: string
-    hours?: ThemeParkHour[]
-}
-
-interface ThemeParkHour {
-    date: string
-    openTime: number
-    closeTime: number
-    earlyTime?: number
-}
 
 async function load(event: H3Event){
-    let dat: ThemeParkInfo = {
+    let dat: ThemeParkGeneral = {
         name: `Universal Studios Florida`,
         id: `uor.usf`,
         hours: [],
