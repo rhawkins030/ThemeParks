@@ -4,7 +4,6 @@ import { ThemeParkRide } from '~/types/ThemePark';
 async function load(event: H3Event){
     let dat: ThemeParkRide[] = [];
     const data: any = await ThemeParkFetch(useRuntimeConfig(event).UNIVERSALORLANDO_ASSET)
-    // We only want rides with the usf tag + the category is general (no events)
     data.forEach((ride) => {
         if(ride.category != "general" || !ride.venue_id.includes("ioa")) return;
         if(ride.queues[0].status == "CLOSED" || ride.queues[0].status == "WEATHER_DELAY" ) {
