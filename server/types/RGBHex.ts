@@ -1,4 +1,4 @@
-export function rgbComponentHex(c: number) : string {
+export function rgbComponentHex(c: Number) : string {
     let hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
