@@ -15,8 +15,8 @@ export enum WaltDisneyWorldResortID {
     Animal_Kingdom = 80007798
 }
 
-export function toDisneyWorld(park: WaltDisneyWorldParkID, resort: WaltDisneyWorldResortID) : string {
-    return `theme-parks/${park};destination=${resort}/`
+export function toDisneyWorld(park: WaltDisneyWorldParkID, resort?: WaltDisneyWorldResortID) : string {
+    return `/theme-parks/${park}/`
 }
 
 export function RGBDisneyToHex(s: string) : null | string {
@@ -43,4 +43,21 @@ export async function generateDisneyAuthenticationCode(event: H3Event) : Promise
     })
 
     return data.access_token;
+}
+
+export async function testWDW(event: H3Event, park: WaltDisneyWorldParkID) : Promise<any> {
+    const code: any = await generateDisneyAuthenticationCode(event);
+    const data: any = await $fetch(useRuntimeConfig(event).WALTDISNEYWORLD_FACILITY + toDisneyWorld(park), {
+        method: 'GET',
+        headers: {
+            'X-App-Id': 'WDW-MDX-ANDROID-3.4.1',
+            'X-Correlation-ID': '1695746348000',
+            'Authorization': `Bearer ${code}`,
+            'Accept': '*/*'
+        }
+    })
+
+    console.log(data);
+
+    return data;
 }

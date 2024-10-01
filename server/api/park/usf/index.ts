@@ -1,7 +1,5 @@
 import { H3Event } from 'h3';
-import { ThemeParkGeneral, ThemeParkInfo } from '~/types/ThemePark';
-import { createMeta, metaExists } from '~/utils/data';
-
+import { ThemeParkGeneral } from '~/types/ThemePark';
 
 async function load(event: H3Event){
     let dat: ThemeParkGeneral = {
