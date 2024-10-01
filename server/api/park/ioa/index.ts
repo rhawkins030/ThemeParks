@@ -27,20 +27,6 @@ async function load(event: H3Event){
         }
     })
 
-    if(!metaExists("ioa")) {
-        let data: ThemeParkInfo = {
-            id: "ioa",
-            name: "Universal Islands of Adventure",
-            description: "",
-            color: service.Color,
-            gps: {
-                latitude: service.Latitude,
-                longitude: service.Longitude
-            }
-        }
-        createMeta("ioa", data);
-    }
-
     return dat;
 }
 

@@ -29,20 +29,6 @@ async function load(event: H3Event){
         }
     })
 
-    if(!metaExists("usf")) {
-        let data: ThemeParkInfo = {
-            id: "usf",
-            name: "Universal Studios Florida",
-            description: "",
-            color: service.Color,
-            gps: {
-                latitude: service.Latitude,
-                longitude: service.Longitude
-            }
-        }
-        createMeta("usf", data);
-    }
-
     return dat;
 }
 

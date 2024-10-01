@@ -3,11 +3,11 @@ import { ThemeParkInfo } from '~/types/ThemePark';
 import { metaExists, loadMeta } from '~/utils/data';
 
 async function load(event: H3Event){
-    if(!metaExists("ioa")) {
-        setResponseStatus(event, 500, "missing cache")
-        return {id:"ioa",status:500,data:"missing cache"}
+    const dat: ThemeParkInfo = {
+        name: 'Universal Islands of Adventure',
+        id: 'uor.ioa',
+        description: ''
     }
-    const dat: ThemeParkInfo = await loadMeta("ioa");
     const data: any = await ThemeParkFetch(useRuntimeConfig(event).UNIVERSALORLANDO_SERVICE)
     const service = data.Results[0]
     dat.hours = [];
@@ -27,6 +27,11 @@ async function load(event: H3Event){
             })
         }
     })
+    dat.color = service.Color;
+    dat.gps = {
+        latitude: service.Latitude,
+        longitude: service.Longitude
+    }
 
     return dat;
 }

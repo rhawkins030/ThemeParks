@@ -3,11 +3,11 @@ import { ThemeParkInfo } from '~/types/ThemePark';
 import { metaExists, loadMeta } from '~/utils/data';
 
 async function load(event: H3Event){
-    if(!metaExists("usf")) {
-        setResponseStatus(event, 500, "missing cache")
-        return {id:"usf",status:500,data:"missing cache"}
+    const dat: ThemeParkInfo = {
+        name: 'Universal Studios Florida',
+        id: 'uor.usf',
+        description: ''
     }
-    const dat: ThemeParkInfo = await loadMeta("usf");
     const data: any = await ThemeParkFetch(useRuntimeConfig(event).UNIVERSALORLANDO_SERVICE)
     const service = data.Results[1]
     dat.hours = [];
@@ -27,6 +27,11 @@ async function load(event: H3Event){
             })
         }
     })
+    dat.color = service.Color;
+    dat.gps = {
+        latitude: service.Latitude,
+        longitude: service.Longitude
+    }
 
     return dat;
 }
